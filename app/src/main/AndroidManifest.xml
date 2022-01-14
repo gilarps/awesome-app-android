@@ -11,7 +11,7 @@
         android:name=".AwesomeApp"
         android:theme="@style/Theme.AwesomeApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

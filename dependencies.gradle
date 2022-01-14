@@ -32,6 +32,7 @@ ext {
             appCompat       : '1.4.0',
             constraintLayout: '2.1.2',
             paging          : '3.1.0',
+            navigation      : '2.3.5',
 
             // Architecture Components
             lifecycle       : '2.2.0',
