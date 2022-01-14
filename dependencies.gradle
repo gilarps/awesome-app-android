@@ -24,13 +24,14 @@ ext {
             kotlin          : '1.4.32',
             kotlinCoroutine : '1.4.3',
 
-            // AndroidX
+            // AndroidX Core
             androidXCore    : '1.7.0',
 
             // Support Library
             material        : '1.5.0',
             appCompat       : '1.4.0',
             constraintLayout: '2.1.2',
+            paging          : '3.1.0',
 
             // Architecture Components
             lifecycle       : '2.2.0',

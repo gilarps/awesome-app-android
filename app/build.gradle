@@ -37,6 +37,21 @@ android {
         viewBinding true
         dataBinding true
     }
+
+    flavorDimensions "main"
+    productFlavors {
+        prod {
+            dimension "main"
+            buildConfigField "String", "PEXELS_API_KEY", "563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"
+            buildConfigField "String", "PEXELS_BASE_URL", "https://api.pexels.com/v1/"
+        }
+
+        stag {
+            dimension "main"
+            buildConfigField "String", "PEXELS_API_KEY", "563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"
+            buildConfigField "String", "PEXELS_BASE_URL", "https://api.pexels.com/v1/"
+        }
+    }
 }
 
 dependencies {
@@ -45,6 +60,9 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.material"
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$versions.paging"
 
     // Koin - DI
     implementation "io.insert-koin:koin-android:$versions.koin"
