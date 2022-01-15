@@ -1,5 +1,8 @@
 package com.gilar.awesomeapp.data
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class PhotoSource(
 
     val small: String? = null,

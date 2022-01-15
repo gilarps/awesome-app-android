@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/drawable/bg_gradient_bottom.xml" value="0.107" />
         <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
-        <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/layout/item_photo.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/gilar/Work/Other/Recruitment/evermos/awesome-app-android/app/src/main/res/layout/item_photos_load_state_footer.xml" value="0.20052083333333334" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="androidx.databinding.BindingAdapter" />
+    </list>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

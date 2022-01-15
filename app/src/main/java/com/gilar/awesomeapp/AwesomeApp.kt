@@ -3,6 +3,8 @@
 package com.gilar.awesomeapp
 
 import android.app.Application
+import com.gilar.awesomeapp.di.networkModule
+import com.gilar.awesomeapp.di.repositoryModule
 import com.gilar.awesomeapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -16,6 +18,8 @@ class AwesomeApp : Application() {
         startKoin {
             androidContext(this@AwesomeApp)
             modules(viewModelModule)
+            modules(networkModule)
+            modules(repositoryModule)
         }
 
         if (BuildConfig.DEBUG) {

@@ -2,17 +2,30 @@ package com.gilar.awesomeapp.view.ui.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import com.gilar.awesomeapp.R
 import com.gilar.awesomeapp.base.BaseFragment
 import com.gilar.awesomeapp.databinding.FragmentHomeBinding
+import com.gilar.awesomeapp.view.ui.adapter.PhotoAdapter
+import com.gilar.awesomeapp.view.ui.adapter.PhotoLoadStateAdapter
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private val viewModel: HomeViewModel by viewModel()
-
     override fun createViewModel() = viewModel
+
+    private var searchJob: Job? = null
+    private val adapter = PhotoAdapter()
 
     override fun getViewBinding(): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater)
@@ -22,9 +35,73 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
      * Called when first launch
      */
     override fun onFirstLaunch(savedInstanceState: Bundle?, view: View) {
-        mViewBinding.collapsingToolbar.apply {
-            title = getString(R.string.app_name)
-            setExpandedTitleTextAppearance(R.style.ExpandedAppBarTitle)
+        // Setup RecyclerView header and footer
+        mViewBinding.recyclerViewPhoto.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = PhotoLoadStateAdapter { adapter.retry() },
+            footer = PhotoLoadStateAdapter { adapter.retry() }
+        )
+        getPhotos()
+    }
+
+    private fun getPhotos() {
+        // Make sure we cancel the previous job before creating a new one
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            viewModel.getPhotos().collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
+
+    /**
+     * Render UI when adapter load state change
+     * */
+    private fun renderUi(loadState: CombinedLoadStates) {
+        // Only shows the list if refresh succeeds
+        mViewBinding.recyclerViewPhoto.isVisible = loadState.source.refresh is LoadState.NotLoading
+        // Show loading spinner during initial load or refresh
+        mViewBinding.progressIndicator.isVisible = loadState.source.refresh is LoadState.Loading
+        // Show the retry state if initial load or refresh fails
+        mViewBinding.btnRetry.isVisible = loadState.source.refresh is LoadState.Error
+
+        // Flag to check whether list is empty
+        val isListEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+
+        // If list is empty, hide RecyclerView
+        mViewBinding.recyclerViewPhoto.isVisible = !isListEmpty
+        // If list is empty or load state is error or load state is loading,
+        // show text message
+        mViewBinding.tvMessage.isVisible = isListEmpty
+                || loadState.source.refresh is LoadState.Error
+                || loadState.source.refresh is LoadState.Loading
+
+        // Set text message that will appear
+        when (loadState.source.refresh) {
+            is LoadState.Error -> {
+                // Error State
+                when ((loadState.source.refresh as LoadState.Error).error) {
+                    is UnknownHostException,
+                    is SocketTimeoutException -> {
+                        // Show connection error message
+                        mViewBinding.tvMessage.text = getString(R.string.failed_to_connect_to_the_server_check_internet_connection)
+                    }
+                    else -> {
+                        // Show general error message
+                        mViewBinding.tvMessage.text = getString(R.string.failed_to_get_photos)
+                    }
+                }
+            }
+            is LoadState.Loading -> {
+                // Loading State
+                // Show loading message
+                mViewBinding.tvMessage.text = getString(R.string.please_wait)
+            }
+            else -> {
+                if (isListEmpty) {
+                    // Show empty message
+                    mViewBinding.tvMessage.text = getString(R.string.photos_not_found_try_again_later)
+                }
+            }
         }
     }
 
@@ -34,11 +111,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun loadObservers() {
     }
 
+    /**
+     * Group of all listener
+     * */
     override fun initUiListener() {
         mViewBinding.run {
             btnViewType.setOnClickListener {
+                // TODO: Implement change list view type (grid and list)
             }
+            btnRetry.setOnClickListener { adapter.retry() }
         }
+        // Make adapter can listen loading state
+        adapter.addLoadStateListener { loadState -> renderUi(loadState) }
     }
 
 }

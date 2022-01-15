@@ -12,7 +12,7 @@ import retrofit2.http.Query
 interface AwesomeService {
 
     @GET("curated")
-    fun fetchPhotos(
+    suspend fun fetchPhotos(
         @Query("page") page: Int? = 1,
         @Query("per_page") perPage: Int? = 20,
     ): PhotosCuratedResponse

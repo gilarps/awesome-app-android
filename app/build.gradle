@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-parcelize'
+    id 'kotlin-android'
     id 'kotlin-kapt'
 }
 
@@ -42,13 +41,15 @@ android {
     productFlavors {
         prod {
             dimension "main"
-            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
+//            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
+            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001bf93d2804ada49db96771add8d3ffdd5"'
             buildConfigField "String", "PEXELS_BASE_URL", '"https://api.pexels.com/v1/"'
         }
 
         stag {
             dimension "main"
-            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
+//            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
+            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001bf93d2804ada49db96771add8d3ffdd5"'
             buildConfigField "String", "PEXELS_BASE_URL", '"https://api.pexels.com/v1/"'
         }
     }
@@ -56,6 +57,7 @@ android {
 
 dependencies {
     implementation "androidx.core:core-ktx:$versions.androidXCore"
+    implementation "androidx.activity:activity-ktx:$versions.activity"
     implementation "androidx.appcompat:appcompat:$versions.appCompat"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
     implementation "com.google.android.material:material:$versions.material"
@@ -76,11 +78,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
 
+    // Moshi
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+
     // Glide - Image Loader
     implementation "com.github.bumptech.glide:glide:$versions.glide"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
 
     // Timber - Logging

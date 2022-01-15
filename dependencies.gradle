@@ -28,10 +28,11 @@ ext {
             androidXCore    : '1.7.0',
 
             // Support Library
+            activity        : '1.4.0',
             material        : '1.5.0',
             appCompat       : '1.4.0',
             constraintLayout: '2.1.2',
-            paging          : '3.1.0',
+            paging          : '3.0.0',
             navigation      : '2.3.5',
 
             // Architecture Components
@@ -43,6 +44,9 @@ ext {
             // Network
             retrofit        : '2.9.0',
             okhttp          : '4.9.0',
+
+            // Moshi
+            moshi           : '1.13.0',
 
             // Glide
             glide           : '4.12.0',

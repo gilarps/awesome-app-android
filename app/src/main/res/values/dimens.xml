@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="appbar_home_height">200dp</dimen>
+    <dimen name="imageview_photo_height">200dp</dimen>
+    <dimen name="imageview_photo_gradient_bottom_height">100dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="padding_horizontal">16dp</dimen>
+</resources>

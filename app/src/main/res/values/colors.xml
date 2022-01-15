@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#00695C</color>
     <color name="colorSecondary">#1565C0</color>
     <color name="colorSecondaryDark">#283593</color>
-    <color name="colorAccent">#9E9D24</color>
+    <color name="colorAccent">#CDDC39</color>
+    <color name="colorTextPrimary">#202020</color>
+    <color name="colorTextSecondary">#4C4C4C</color>
+    <color name="grey">#CECECE</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
