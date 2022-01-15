@@ -4,6 +4,7 @@ package com.gilar.awesomeapp
 
 import android.app.Application
 import com.gilar.awesomeapp.di.networkModule
+import com.gilar.awesomeapp.di.persistenceModule
 import com.gilar.awesomeapp.di.repositoryModule
 import com.gilar.awesomeapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -20,6 +21,7 @@ class AwesomeApp : Application() {
             modules(viewModelModule)
             modules(networkModule)
             modules(repositoryModule)
+            modules(persistenceModule)
         }
 
         if (BuildConfig.DEBUG) {

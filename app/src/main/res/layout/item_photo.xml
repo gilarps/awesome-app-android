@@ -11,13 +11,14 @@
 
         <variable
             name="photo"
-            type="com.gilar.awesomeapp.data.Photo" />
+            type="com.gilar.awesomeapp.data.model.Photo" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/imageview_photo_height"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/_8dp"
+        app:cardElevation="@dimen/card_elevation"
         app:cardCornerRadius="@dimen/card_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,7 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/_16dp"
                 android:text="@{photo.photographer}"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -6,9 +6,13 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gilar.awesomeapp.R
 import com.gilar.awesomeapp.base.BaseFragment
 import com.gilar.awesomeapp.databinding.FragmentHomeBinding
+import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_GRID
+import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_LIST
 import com.gilar.awesomeapp.view.ui.adapter.PhotoAdapter
 import com.gilar.awesomeapp.view.ui.adapter.PhotoLoadStateAdapter
 import kotlinx.coroutines.Job
@@ -26,6 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private var searchJob: Job? = null
     private val adapter = PhotoAdapter()
+    private var listViewType = LIST_VIEW_TYPE_GRID
 
     override fun getViewBinding(): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater)
@@ -41,6 +46,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             footer = PhotoLoadStateAdapter { adapter.retry() }
         )
         getPhotos()
+        viewModel.getListViewType()
     }
 
     private fun getPhotos() {
@@ -109,6 +115,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
      * Group of all live data observer from view model
      * */
     override fun loadObservers() {
+        // Observing listViewType value
+        viewModel.listViewType.observe(viewLifecycleOwner) {
+            listViewType = it
+            when (it) {
+                LIST_VIEW_TYPE_GRID -> {
+                    // Change RecyclerView layout manager to grid
+                    val layoutManager = GridLayoutManager(context, 2)
+                    mViewBinding.recyclerViewPhoto.layoutManager = layoutManager
+                    // Change ivViewType resource to grid
+                    mViewBinding.ivViewType.setImageResource(R.drawable.ic_view_grid)
+                }
+                LIST_VIEW_TYPE_LIST -> {
+                    // Change RecyclerView layout manager to linear
+                    val layoutManager = LinearLayoutManager(context)
+                    mViewBinding.recyclerViewPhoto.layoutManager = layoutManager
+                    // Change ivViewType resource to list
+                    mViewBinding.ivViewType.setImageResource(R.drawable.ic_view_list)
+                }
+            }
+        }
     }
 
     /**
@@ -117,7 +143,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun initUiListener() {
         mViewBinding.run {
             btnViewType.setOnClickListener {
-                // TODO: Implement change list view type (grid and list)
+                // Set list view type
+                viewModel.setListViewType(
+                    when (listViewType) {
+                        LIST_VIEW_TYPE_GRID -> LIST_VIEW_TYPE_LIST
+                        LIST_VIEW_TYPE_LIST -> LIST_VIEW_TYPE_GRID
+                        else -> LIST_VIEW_TYPE_GRID
+                    }
+                )
             }
             btnRetry.setOnClickListener { adapter.retry() }
         }

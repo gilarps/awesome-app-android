@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.gilar.awesomeapp.data.Photo
+import com.bumptech.glide.request.RequestOptions
+import com.gilar.awesomeapp.R
+import com.gilar.awesomeapp.data.model.Photo
 import com.gilar.awesomeapp.databinding.ItemPhotoBinding
 import com.gilar.awesomeapp.view.ui.home.HomeFragment
 
@@ -23,6 +25,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)
+            .apply(RequestOptions().placeholder(R.color.grey).centerCrop())
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(view)

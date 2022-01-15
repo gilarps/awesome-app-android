@@ -34,6 +34,7 @@ ext {
             constraintLayout: '2.1.2',
             paging          : '3.0.0',
             navigation      : '2.3.5',
+            datastore       : '1.0.0',
 
             // Architecture Components
             lifecycle       : '2.2.0',

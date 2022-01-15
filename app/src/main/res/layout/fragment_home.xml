@@ -39,21 +39,22 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btnViewType"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/_36dp"
+                    android:layout_height="@dimen/_36dp"
                     android:layout_gravity="end"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/_16dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="8dp">
+                    app:cardCornerRadius="@dimen/_24dp"
+                    app:cardElevation="@dimen/_8dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivViewType"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:padding="10dp"
+                        android:padding="@dimen/_8dp"
                         android:src="@drawable/ic_view_grid" />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -81,12 +82,12 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom"
-        android:paddingBottom="16dp"
+        android:paddingBottom="@dimen/_16dp"
         android:paddingHorizontal="@dimen/padding_horizontal"
         android:gravity="center"
         android:textColor="@color/colorTextPrimary"
         android:paddingTop="100dp"
-        android:textSize="16sp"
+        android:textSize="@dimen/_16sp"
         android:layout_gravity="bottom|center_horizontal"
         tools:text="@string/please_wait"/>
 
@@ -105,8 +106,8 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:visibility="gone"
-        android:paddingHorizontal="8dp"
-        android:paddingTop="8dp"
+        android:paddingHorizontal="@dimen/_8dp"
+        android:paddingTop="@dimen/_8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:spanCount="2"

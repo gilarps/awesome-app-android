@@ -1,4 +1,4 @@
-package com.gilar.awesomeapp.data
+package com.gilar.awesomeapp.data.model
 
 import com.squareup.moshi.JsonClass
 
