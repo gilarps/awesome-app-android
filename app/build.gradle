@@ -95,8 +95,11 @@ dependencies {
     testImplementation "junit:junit:$versions.jUnit"
     testImplementation "androidx.test:core:$versions.testAndroidX"
     testImplementation "org.mockito:mockito-inline:$versions.mockitoInline"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutineTest"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
     androidTestImplementation "androidx.test.ext:junit:$versions.jUnitAndroidX"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCore"
+    androidTestImplementation "androidx.arch.core:core-testing:$versions.coreTesting"
 }
 
 // Generating version code. To change version code, just simply change appVersion's value from dependencies.gradle files

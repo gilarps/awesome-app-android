@@ -56,8 +56,11 @@ ext {
             timber          : '5.0.1',
 
             // Testing
-            jUnit           : '4.13.2',
+            jUnit           : '4.12.0',
+            coroutineTest   : '1.6.0',
             jUnitAndroidX   : '1.1.3',
+            mockwebserver   : '4.9.0',
+            coreTesting     : '2.1.0',
             testAndroidX    : '1.4.0',
             mockitoInline   : '3.6.0',
             espressoCore    : '3.4.0',
