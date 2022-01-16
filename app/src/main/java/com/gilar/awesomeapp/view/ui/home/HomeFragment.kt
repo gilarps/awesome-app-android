@@ -13,13 +13,12 @@ import com.gilar.awesomeapp.base.BaseFragment
 import com.gilar.awesomeapp.databinding.FragmentHomeBinding
 import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_GRID
 import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_LIST
-import com.gilar.awesomeapp.view.ui.adapter.PhotoAdapter
-import com.gilar.awesomeapp.view.ui.adapter.PhotoLoadStateAdapter
+import com.gilar.awesomeapp.view.adapter.PhotoAdapter
+import com.gilar.awesomeapp.view.adapter.PhotoLoadStateAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
@@ -73,8 +72,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         // Flag to check whether list is empty
         val isListEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
 
-        // If list is empty, hide RecyclerView
-        mViewBinding.recyclerViewPhoto.isVisible = !isListEmpty
         // If list is empty or load state is error or load state is loading,
         // show text message
         mViewBinding.tvMessage.isVisible = isListEmpty

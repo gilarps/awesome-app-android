@@ -1,4 +1,4 @@
-package com.gilar.awesomeapp.view.ui.adapter
+package com.gilar.awesomeapp.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -82,6 +82,7 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    implementation 'androidx.fragment:fragment-testing:1.4.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
 
     // Glide - Image Loader
@@ -100,6 +101,8 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$versions.jUnitAndroidX"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCore"
     androidTestImplementation "androidx.arch.core:core-testing:$versions.coreTesting"
+    androidTestImplementation "io.mockk:mockk-android:1.11.0"
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.5"
 }
 
 // Generating version code. To change version code, just simply change appVersion's value from dependencies.gradle files
