@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 apply from: '../dependencies.gradle'
@@ -65,8 +67,9 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:$versions.datastore"
 
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+    api("androidx.navigation:navigation-fragment-ktx:2.4.0-rc01")
+//    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+//    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 
     // Paging
     implementation "androidx.paging:paging-runtime-ktx:$versions.paging"
@@ -82,7 +85,8 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
-    implementation 'androidx.fragment:fragment-testing:1.4.0'
+    testImplementation 'androidx.fragment:fragment-testing:1.4.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
 
     // Glide - Image Loader

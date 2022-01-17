@@ -15,10 +15,13 @@ import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_GRID
 import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_LIST
 import com.gilar.awesomeapp.view.adapter.PhotoAdapter
 import com.gilar.awesomeapp.view.adapter.PhotoLoadStateAdapter
+import com.gilar.awesomeapp.view.ui.detail.DetailFragment
+import com.gilar.awesomeapp.view.ui.detail.DetailFragmentArgs
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
@@ -28,7 +31,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun createViewModel() = viewModel
 
     private var searchJob: Job? = null
-    private val adapter = PhotoAdapter()
+    private val adapter = PhotoAdapter { photo ->
+
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(photo)
+        getNavController()?.navigate(action)
+    }
     private var listViewType = LIST_VIEW_TYPE_GRID
 
     override fun getViewBinding(): FragmentHomeBinding {

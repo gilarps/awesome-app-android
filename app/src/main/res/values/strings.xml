@@ -5,4 +5,10 @@
     <string name="failed_to_get_photos">Failed to get photos</string>
     <string name="photos_not_found_try_again_later">Photos not found. Please try again later.</string>
     <string name="try_again">Try Again</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="visit_profile">Visit Profile</string>
+    <string name="resolution">Resolution</string>
+    <string name="photographer">Photographer</string>
+    <string name="description">Description</string>
 </resources>

@@ -1,19 +1,22 @@
 package com.gilar.awesomeapp.data.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Photo(
 
     val src: PhotoSource? = null,
 
-//    val width: Int? = null,
+    val width: Int? = null,
 
     @Json(name = "avg_color")
     val avgColor: String? = null,
 
-//    val alt: String? = null,
+    val alt: String? = null,
 
     val photographer: String? = null,
 
@@ -29,7 +32,6 @@ data class Photo(
     @Json(name = "photographer_id")
     val photographerId: Int? = null,
 
-//    val liked: Boolean? = null,
+    val height: Int? = null
 
-//    val height: Int? = null
-)
+) : Parcelable

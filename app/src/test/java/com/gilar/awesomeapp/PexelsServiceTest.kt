@@ -61,13 +61,13 @@ class PexelsServiceTest {
 
     @Test
     fun `Assert get photos response structure match JSON Server response`() = runBlocking {
-        // This shouldn't have to throw an error if the response
-        // is well mapped with the server response mocked in [setUpMockWebServerDispatcher]
+        // When fetch photos from server
         val photos = pexelsService.fetchPhotos(
             page = 1,
             perPage = 16
         )
 
+        // Then response structure and size will valid
         assertEquals(
             "Photos size match with the one provided in resources",
             PhotosData.provideRemotePhotosFromAssets().size,
@@ -77,11 +77,13 @@ class PexelsServiceTest {
 
     @Test
     fun `Assert get photos response value is valid`() = runBlocking {
+        // When fetch photos from server
         val photos = pexelsService.fetchPhotos(
             page = 1,
             perPage = 16
         )
 
+        // Then response value is valid and match with key
         MatcherAssert.assertThat(photos.photos[0].id, CoreMatchers.`is`(10824761))
         MatcherAssert.assertThat(photos.photos[0].photographer, CoreMatchers.`is`("Lisa Fotios"))
         MatcherAssert.assertThat(

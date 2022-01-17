@@ -1,8 +1,11 @@
 package com.gilar.awesomeapp.data.model
 
+import android.os.Parcelable
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class PhotoSource(
 
     val small: String? = null,
@@ -20,4 +23,4 @@ data class PhotoSource(
     val portrait: String? = null,
 
     val landscape: String? = null
-)
+) : Parcelable

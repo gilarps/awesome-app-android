@@ -23,6 +23,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
     private var navController: NavController? = null
 
+    var hasInitializedRootView = false
+    private var rootView: View? = null
+
     /**
      * This function is to create view model
      * */
@@ -55,10 +58,13 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onFirstLaunch(savedInstanceState, view)
-        initNavController(view)
-        initUiListener()
+        if (!hasInitializedRootView) {
+            hasInitializedRootView = true
+            onFirstLaunch(savedInstanceState, view)
+            initNavController(view)
+        }
         loadObservers()
+        initUiListener()
     }
 
     /**
