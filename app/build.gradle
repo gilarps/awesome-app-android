@@ -65,11 +65,10 @@ dependencies {
     implementation "com.google.android.material:material:$versions.material"
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
     implementation "androidx.datastore:datastore-preferences:$versions.datastore"
+    implementation "androidx.legacy:legacy-support-v4:$versions.legacy"
 
     // Navigation
-    api("androidx.navigation:navigation-fragment-ktx:2.4.0-rc01")
-//    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
-//    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+    api("androidx.navigation:navigation-fragment-ktx:$versions.navigation")
 
     // Paging
     implementation "androidx.paging:paging-runtime-ktx:$versions.paging"
@@ -85,8 +84,6 @@ dependencies {
     // Moshi
     implementation "com.squareup.moshi:moshi:$versions.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
-    testImplementation 'androidx.fragment:fragment-testing:1.4.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
 
     // Glide - Image Loader
@@ -105,8 +102,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$versions.jUnitAndroidX"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCore"
     androidTestImplementation "androidx.arch.core:core-testing:$versions.coreTesting"
-    androidTestImplementation "io.mockk:mockk-android:1.11.0"
-    androidTestImplementation "androidx.navigation:navigation-testing:2.3.5"
+    androidTestImplementation "io.mockk:mockk-android:$versions.mockk"
+    debugImplementation("androidx.fragment:fragment-testing:$versions.fragmentTesting")
+    androidTestImplementation "androidx.navigation:navigation-testing:$versions.navTesting"
 }
 
 // Generating version code. To change version code, just simply change appVersion's value from dependencies.gradle files
@@ -120,13 +118,13 @@ private Integer generateVersionCode() {
 private String generateVersionName() {
     String versionName = "${appVersion.versionMajor}.${appVersion.versionMinor}.${appVersion.versionPatch}"
     if (appVersion.versionClassifier == null) {
-        if(appVersion.currentPhase == appVersionPhase.phaseSnapshot) {
+        if (appVersion.currentPhase == appVersionPhase.phaseSnapshot) {
             appVersion.versionClassifier = "snapshot"
-        } else if(appVersion.currentPhase == appVersionPhase.phaseAlpha) {
+        } else if (appVersion.currentPhase == appVersionPhase.phaseAlpha) {
             appVersion.versionClassifier = "alpha"
-        } else if(appVersion.currentPhase == appVersionPhase.phaseBeta) {
+        } else if (appVersion.currentPhase == appVersionPhase.phaseBeta) {
             appVersion.versionClassifier = "beta"
-        } else if(appVersion.currentPhase == appVersionPhase.phaseRc) {
+        } else if (appVersion.currentPhase == appVersionPhase.phaseRc) {
             appVersion.versionClassifier = "rc"
         }
     }

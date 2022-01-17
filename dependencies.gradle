@@ -35,6 +35,8 @@ ext {
             paging          : '3.0.0',
             navigation      : '2.3.5',
             datastore       : '1.0.0',
+            legacy          : '1.0.0',
+            navigation      : '2.4.0-rc01',
 
             // Architecture Components
             lifecycle       : '2.2.0',
@@ -64,5 +66,8 @@ ext {
             testAndroidX    : '1.4.0',
             mockitoInline   : '3.6.0',
             espressoCore    : '3.4.0',
+            mockk           : '1.11.0',
+            fragmentTesting : '1.4.0',
+            navTesting      : '2.3.5',
     ]
 }
