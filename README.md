@@ -1,8 +1,8 @@
 # Awesome App for Android
 
-![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/home-grid.jpg)
-![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/home-list.jpg)
-![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/detail.jpg)
+![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/home-grid.png)
+![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/home-list.png)
+![GitHub Cards Preview](https://github.com/gilarps/awesome-app-android/blob/master/art/detail.png)
 
 Awesome App is and Android App contains randomized image and descriptions from [Pexels API](https://www.pexels.com/api/).
 
