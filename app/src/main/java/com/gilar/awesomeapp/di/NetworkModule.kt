@@ -3,6 +3,7 @@ package com.gilar.awesomeapp.di
 import com.gilar.awesomeapp.data.remote.PexelsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val networkModule = module {
@@ -13,6 +14,6 @@ val networkModule = module {
       .build()
   }
 
-  single { PexelsService.create() }
+  single { PexelsService.create(androidContext()) }
 
 }
