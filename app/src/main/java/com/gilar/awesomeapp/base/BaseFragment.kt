@@ -23,7 +23,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel> : Fragment() {
 
     private var navController: NavController? = null
 
-    var hasInitializedRootView = false
+    private var hasInitializedRootView = false
     private var rootView: View? = null
 
     /**

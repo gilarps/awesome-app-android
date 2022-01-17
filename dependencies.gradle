@@ -13,7 +13,7 @@ ext {
             versionMinor     : 0,
             versionPatch     : 0,
             versionClassifier: null,
-            currentPhase     : appVersionPhase.phaseSnapshot
+            currentPhase     : appVersionPhase.phaseStable
     ]
 
     versions = [
@@ -33,7 +33,6 @@ ext {
             appCompat       : '1.4.0',
             constraintLayout: '2.1.2',
             paging          : '3.0.0',
-            navigation      : '2.3.5',
             datastore       : '1.0.0',
             legacy          : '1.0.0',
             navigation      : '2.4.0-rc01',

@@ -43,15 +43,13 @@ android {
     productFlavors {
         prod {
             dimension "main"
-//            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
-            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001bf93d2804ada49db96771add8d3ffdd5"'
+            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
             buildConfigField "String", "PEXELS_BASE_URL", '"https://api.pexels.com/v1/"'
         }
 
         stag {
             dimension "main"
-//            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
-            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001bf93d2804ada49db96771add8d3ffdd5"'
+            buildConfigField "String", "PEXELS_API_KEY", '"563492ad6f91700001000001ad846777c1204b91b245e2e4a99f6ea9"'
             buildConfigField "String", "PEXELS_BASE_URL", '"https://api.pexels.com/v1/"'
         }
     }

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.gilar.awesomeapp.R
 import com.gilar.awesomeapp.data.model.Photo
 import com.gilar.awesomeapp.databinding.ItemPhotoBinding
-import com.gilar.awesomeapp.view.ui.MainActivity
 import com.gilar.awesomeapp.view.ui.home.HomeFragment
-import timber.log.Timber
 
 /**
  * Adapter for the [RecyclerView] in [HomeFragment].
@@ -35,7 +32,8 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     }
 }
 
-class PhotoAdapter(val onClick : (Photo) -> Unit) : PagingDataAdapter<Photo, PhotoAdapter.PhotoViewHolder>(GalleryDiffCallback()) {
+class PhotoAdapter(private val onClick: (Photo) -> Unit) :
+    PagingDataAdapter<Photo, PhotoAdapter.PhotoViewHolder>(GalleryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         return PhotoViewHolder(
@@ -57,12 +55,11 @@ class PhotoAdapter(val onClick : (Photo) -> Unit) : PagingDataAdapter<Photo, Pho
 
     class PhotoViewHolder(
         private val binding: ItemPhotoBinding,
-        val onClick : (Photo) -> Unit
+        val onClick: (Photo) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.setClickListener { _ ->
+            binding.setClickListener {
                 binding.photo?.let { photo ->
-                    // TODO: Redirect to photo details page
                     onClick(photo)
                 }
             }

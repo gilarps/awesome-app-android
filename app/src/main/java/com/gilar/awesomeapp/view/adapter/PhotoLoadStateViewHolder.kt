@@ -22,11 +22,11 @@ class PhotoLoadStateViewHolder(
 
     fun bind(loadState: LoadState) {
         if (loadState is LoadState.Error) {
-            binding.tvMoviesErrorDescription.text = loadState.error.localizedMessage
+            binding.tvErrorDescription.text = loadState.error.localizedMessage
         }
-        binding.progressMoviesLoadMore.isVisible = loadState is LoadState.Loading
+        binding.progressLoadMore.isVisible = loadState is LoadState.Loading
         binding.btnRetry.isVisible = loadState is LoadState.Error
-        binding.tvMoviesErrorDescription.isVisible = loadState is LoadState.Error
+        binding.tvErrorDescription.isVisible = loadState is LoadState.Error
     }
 
     companion object {

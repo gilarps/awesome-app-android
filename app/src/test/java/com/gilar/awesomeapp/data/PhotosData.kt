@@ -8,11 +8,11 @@ import com.squareup.moshi.Moshi
 
 object PhotosData {
     private val moshi = Moshi.Builder().build()
-    private val remoteMoviesAdapter: JsonAdapter<PhotosCuratedResponse> =
+    private val remoteAdapter: JsonAdapter<PhotosCuratedResponse> =
         moshi.adapter(PhotosCuratedResponse::class.java)
 
     fun provideRemotePhotosFromAssets(): List<Photo> {
-        return remoteMoviesAdapter.fromJson(
+        return remoteAdapter.fromJson(
             FileReaderUtil.kotlinReadFileWithNewLineFromResources(
                 fileName = "photos.json"
             )

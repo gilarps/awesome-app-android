@@ -15,8 +15,6 @@ import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_GRID
 import com.gilar.awesomeapp.util.LIST_VIEW_TYPE_LIST
 import com.gilar.awesomeapp.view.adapter.PhotoAdapter
 import com.gilar.awesomeapp.view.adapter.PhotoLoadStateAdapter
-import com.gilar.awesomeapp.view.ui.detail.DetailFragment
-import com.gilar.awesomeapp.view.ui.detail.DetailFragmentArgs
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -89,11 +87,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         when (loadState.source.refresh) {
             is LoadState.Error -> {
                 // Error State
+                Timber.e("Loading error")
                 when ((loadState.source.refresh as LoadState.Error).error) {
                     is UnknownHostException,
                     is SocketTimeoutException -> {
                         // Show connection error message
-                        mViewBinding.tvMessage.text = getString(R.string.failed_to_connect_to_the_server_check_internet_connection)
+                        mViewBinding.tvMessage.text =
+                            getString(R.string.failed_to_connect_to_the_server_check_internet_connection)
                     }
                     else -> {
                         // Show general error message
@@ -104,12 +104,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             is LoadState.Loading -> {
                 // Loading State
                 // Show loading message
+                Timber.i("Loading data...")
                 mViewBinding.tvMessage.text = getString(R.string.please_wait)
             }
             else -> {
                 if (isListEmpty) {
                     // Show empty message
-                    mViewBinding.tvMessage.text = getString(R.string.photos_not_found_try_again_later)
+                    Timber.w("List is empty")
+                    mViewBinding.tvMessage.text =
+                        getString(R.string.photos_not_found_try_again_later)
                 }
             }
         }

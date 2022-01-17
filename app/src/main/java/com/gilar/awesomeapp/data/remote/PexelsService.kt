@@ -12,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import timber.log.Timber
 import java.io.IOException
 
 interface PexelsService {
@@ -24,7 +23,6 @@ interface PexelsService {
     ): PhotosCuratedResponse
 
     companion object {
-
 
         class CUSTOM_REWRITE_RESPONSE_INTERCEPTOR : Interceptor {
             @Throws(IOException::class)
@@ -68,7 +66,6 @@ interface PexelsService {
                     *  the device is connected to Internet or not.
                     */
                     request = if (NetworkUtil().hasNetwork(context)!!) {
-                        Timber.e("Has network")
                         /*
                     *  If there is Internet, get the cache that was stored 5 seconds ago.
                     *  If the cache is older than 5 seconds, then discard it,
